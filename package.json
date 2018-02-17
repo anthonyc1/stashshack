@@ -1,0 +1,25 @@
+{
+  "name": "stash.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.7"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anthonyc1/hackcewit18.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anthonyc1/hackcewit18/issues"
+  },
+  "homepage": "https://github.com/anthonyc1/hackcewit18#readme"
+}
