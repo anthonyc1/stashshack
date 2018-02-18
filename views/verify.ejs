@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Verification</title>
+	<link rel="stylesheet" type="text/css" href="/css/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<div>
+		<p>You should receive an SMS with a 4-digit code.<br>
+			Please enter that code below.</p>
+	</div>
+	<form method="post" action="/verify">	
+		<div id="landing">
+			<p id="name">Enter the 4-digit code:</p><br>
+			<input type="text" name="code" placeholder="code" maxlength="4" pattern="\d{4}" required> 
+		</div>
+	</form>
+	<div>
+		<p>If you didn't receive the SMS with a 4-digit code, click below to resend.</p>
+	</div>
+	<form method = "get" action="/send">
+        <input type="submit" name="resend" value="Resend" />
+    </form>
+</body>
+</html>
