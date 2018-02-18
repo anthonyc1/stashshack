@@ -4,23 +4,24 @@
 	<title>Verification</title>
 	<link rel="stylesheet" type="text/css" href="/css/styles.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-	<div>
+	<div class="container">
+		<div id="landing">
 		<p>You should receive an SMS with a 4-digit code.<br>
 			Please enter that code below.</p>
-	</div>
-	<form method="post" action="/verify">	
-		<div id="landing">
-			<p id="name">Enter the 4-digit code:</p><br>
-			<input type="text" name="code" placeholder="code" maxlength="4" pattern="\d{4}" required> 
-		</div>
-	</form>
-	<div>
+		<form method="post" action="/verify">	
+			<div class="form-group">
+				<p id="name">Enter the 4-digit code:</p><br>
+				<input type="text" class="form-control" name="code" placeholder="code" maxlength="4" pattern="\d{4}" required> 
+			</div>
+		</form>
 		<p>If you didn't receive the SMS with a 4-digit code, click below to resend.</p>
+		<form method = "get" action="/send">
+	        <input type="submit" name="resend" class="btn btn-light" value="Resend" />
+	    </form>
+    	</div>
 	</div>
-	<form method = "get" action="/send">
-        <input type="submit" name="resend" value="Resend" />
-    </form>
 </body>
 </html>

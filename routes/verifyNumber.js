@@ -28,6 +28,7 @@ const nexmo = new Nexmo({
 });
 
 var code;
+var phoneNumber;
 var storedNum;
 
 function generateCode(){
@@ -38,14 +39,7 @@ function generateCode(){
 	return num;
 }
 
-function compareCodes(codeMongo, codeSite){
-	if (codeMongo == codeSite)
-		return true;
-	else
-		return false;
-}
-
-function sendCode(code){
+function sendCode(phoneNumber, code){
 	nexmo.message.sendSms(
 	  virtualNumber, testNumber, code,
 	    (err, responseData) => {
@@ -68,24 +62,28 @@ router.get('/home', function (req, res) {
 router.post('/number', function (req, res) {
 	var number = req.body.number;
 	storedNum = number;
+	phoneNumber = number;
 	var obj = db.collection("numbers").findOne({ 'number' : storedNum}).then(function(token){
-		return token.number;
+		if (token == null)
+			return null;
+	    else
+			return token.number;
 	});
 	obj.then(function(number){
 		if (number == req.body.number){
 			res.render('entry')
-			console.log('number in database');
+			console.log('number already in database');
 		} else {
 			code = generateCode();
 			numbers.insert({ 'number' : number, 'code' : code});
-			sendCode(code);
+			sendCode(phoneNumber.toString(), code);
 			res.render('verify');
 		}
 	});
 });
 
 router.get('/send', function (req, res) {
-	sendCode(code);
+	sendCode(phoneNumber, code);
 });
 
 router.post('/verify', function (req, res) {

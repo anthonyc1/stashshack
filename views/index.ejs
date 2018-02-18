@@ -4,18 +4,24 @@
 	<title>Landing</title>
 	<link rel="stylesheet" type="text/css" href="/css/styles.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-	<div>
-		<p>Welcome to our store!<br>
-			We offer exclusive discounts and prizes.<br>
-			To qualify, we just need to validate your phone number.</p>
-	</div>
-	<form method="post" action="/number">	
+	<div class="container">
 		<div id="landing">
-			<p id="name">Enter your phone number:</p><br>
-			<input type="text" name="number" placeholder="Your Phone Number" maxlength="11" pattern="\d{11}" required> 
+			<p id="heading">Welcome to our store!</p><br>
+			<p>We offer <strong>exclusive</strong> discounts and prizes.<br>
+				To qualify, we just need to validate your phone number.</p>
+		<hr>
+		<form method="post" action="/number">	
+			<div class="form-group">
+				<label id="name">Enter your phone number:</label><br>
+				<input type="text" class="form-control" name="number" placeholder="Your Phone Number" maxlength="11" pattern="\d{11}" required> 
+				<small class="form-text text-muted">We'll never share your email with anyone else.</small>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
 		</div>
-	</form>
+	</div>
 </body>
 </html>

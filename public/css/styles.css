@@ -1,0 +1,17 @@
+.container{
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 30px;
+}
+
+#landing {
+	text-align: center;
+	font-size:18px;
+
+}
+
+#heading {
+	font-size: 28px;
+	font-style: bold;
+	font-family: monospace;;
+}

@@ -4,11 +4,18 @@
 	<title>Error</title>
 	<link rel="stylesheet" type="text/css" href="/css/styles.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-	<div>
-		<p>Your number <%= number %> is out of range.<br>
+	<div class="container">
+		<div id="landing">
+			<p>Your entry '<%= number %>' is out of range or invalid.<br>
 			Please try again.</p>
+			<hr>
+			<form method="get" action="/raffle">
+        		<input type="submit" name="back" class="btn btn-secondary"value="Back" />
+    		</form>
+		</div>
 	</div>
 
 </body>
