@@ -68,10 +68,20 @@ router.get('/home', function (req, res) {
 router.post('/number', function (req, res) {
 	var number = req.body.number;
 	storedNum = number;
-	code = generateCode();
-	numbers.insert({ 'number' : number, 'code' : code});
-	sendCode(code);
-	res.render('verify');
+	var obj = db.collection("numbers").findOne({ 'number' : storedNum}).then(function(token){
+		return token.number;
+	});
+	obj.then(function(number){
+		if (number == req.body.number){
+			res.render('entry')
+			console.log('number in database');
+		} else {
+			code = generateCode();
+			numbers.insert({ 'number' : number, 'code' : code});
+			sendCode(code);
+			res.render('verify');
+		}
+	});
 });
 
 router.get('/send', function (req, res) {
