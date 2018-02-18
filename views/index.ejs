@@ -14,7 +14,7 @@
 	<form method="post" action="/number">	
 		<div id="landing">
 			<p id="name">Enter your phone number:</p><br>
-			<input type="text" name="number" placeholder="Your Phone Number" size="30"> 
+			<input type="text" name="number" placeholder="Your Phone Number" maxlength="11" pattern="\d{11}" required> 
 		</div>
 	</form>
 </body>
