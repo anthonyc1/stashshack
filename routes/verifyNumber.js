@@ -41,7 +41,7 @@ function generateCode(){
 
 function sendCode(phoneNumber, code){
 	nexmo.message.sendSms(
-	  virtualNumber, testNumber, code,
+	  virtualNumber, phoneNumber, code,
 	    (err, responseData) => {
 	      if (err) {
 	        console.log(err);
