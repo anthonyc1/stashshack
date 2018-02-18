@@ -98,7 +98,10 @@ router.post('/number', function (req, res) {
 	});
 	obj.then(function(number){
 		if (number == req.body.number){
-			res.render('entry')
+			res.render('home-tmpl', {
+                pageID: 'trivia',
+                countDown: calculateHoursToNextGame()
+            });
 			console.log('number already in database');
 		} else {
 			code = generateCode();
@@ -120,12 +123,36 @@ router.post('/verify', function (req, res) {
 	});
 	obj.then(function(code){
 		if (code == req.body.code){
-			res.render('entry')
+			res.render('home-tmpl', {
+                pageID: 'trivia',
+                countDown: calculateHoursToNextGame()
+            });
 			console.log('success');
 		} else {
 			res.render('failToVerify');
 		}
 	});
 });
+
+function calculateHoursToNextGame() {
+    var d = new Date();
+    var currentTime = new Date();
+    var h = d.getHours();
+    var m = d.getMinutes();
+    var s = d.getSeconds();
+    var ten = d.setHours(10,0,0,0);
+    var two = d.setHours(14,0,0,0);
+    var six = d.setHours(18,0,0,0);
+    var countDownTime;
+    if (h >= 10 && h < 14) {
+        countDownTime = (two - currentTime)/1000;
+    } else if (h >= 14 && h < 18) {
+        countDownTime = (six - currentTime)/1000;
+
+    } else if (h >= 18 || h < 10) {
+        countDownTime = (ten - currentTime)/1000;
+    }
+    return countDownTime;
+}
 
 module.exports = router;

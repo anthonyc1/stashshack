@@ -2,18 +2,20 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
-.body-style {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-}
-
-.list-group-item{
+.list-group-item {
     cursor: "defaulte";
-
 }
-
 
 #trivia {
     font-size: 30px;
+}
+
+#gameCountdown {
+    padding: 10px 0 0 70px;
+    font-size: 30px;
+    display: inline-block;
+}
+
+#submitButton{
+    margin: 10px 0 0 0
 }

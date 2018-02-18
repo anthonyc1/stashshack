@@ -2,9 +2,25 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({
+    extended: false
+}));
+
+router.get('/raffle', function (req, res) {
+	res.render('entry');
+});
+
+router.post('/raffle', function (req, res) {
+	var number = req.body.number;
+		res.send('<p>Thanks for your submission.<br>'+
+        'Your number is '+ number +'.</p>');
+});
 
 router.get('/game', function(request, response) {
-    response.send('<div class="card" style="width: 18rem;">'+
+    response.send('<div class="card">'+
+    '<div class="row">'+
+    '<div class="col-md-10">'+
         '<div class="card-body">' +
             '<h5 class="card-title">What kind of animal is Tarantula Hawk? </h5>'+
             '<ul class="list-group">'+
@@ -13,11 +29,38 @@ router.get('/game', function(request, response) {
                 '<li class="list-group-item trivia-question" onselectstart="return false">Hawk</li>'+
             '</ul>'+
         '</div>'+
+        '</div>'+
+        '<div id="gameCountdown" class="col-md-2">'+
+            ''+
+        '</div>'+
+        '</div>'+
     '</div>');
 });
 
 
-router.get('/timer', function(request, response) {
+router.get('/nextGame', function(request, response) {
+    response.send('<div class="card">'+
+    '<div class="row">'+
+    '<div class="col-md-10">'+
+        '<div class="card-body">' +
+            '<h5 class="card-title">What is name of the Chinese currency?</h5>'+
+            '<ul class="list-group">'+
+                '<li class="list-group-item trivia-question" onselectstart="return false">yen</li>'+
+                '<li class="list-group-item trivia-question" onselectstart="return false">Renminbi</li>'+
+                '<li class="list-group-item trivia-question" onselectstart="return false">won</li>'+
+            '</ul>'+
+        '</div>'+
+        '</div>'+
+        '<div id="gameCountdown" class="col-md-2">'+
+            ''+
+        '</div>'+
+        '</div>'+
+    '</div>');
+});
+
+
+
+router.get('/games', function(request, response) {
     calculateHoursToNextGame();
     response.render('home-tmpl', {
         pageID: 'trivia',
@@ -46,11 +89,5 @@ function calculateHoursToNextGame() {
     return countDownTime;
 }
 
-
-
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({
-    extended: false
-}));
 
 module.exports = router;

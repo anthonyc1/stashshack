@@ -7,7 +7,6 @@ const app = express();
 var port = process.env.PORT || 3003;
 
 app.use(require("./routes/home-route.js"));
-app.use(require("./routes/raffle.js"));
 //app.use(require("./routes/sendSMS.js"));
 app.use(require("./routes/verifyNumber.js"));
 
