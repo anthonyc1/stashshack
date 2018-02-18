@@ -41,7 +41,7 @@ function generateCode(){
 
 function sendCode(phoneNumber, code){
 	nexmo.message.sendSms(
-	  virtualNumber, testNumber, code,
+	  virtualNumber, phoneNumber, code,
 	    (err, responseData) => {
 	      if (err) {
 	        console.log(err);
@@ -75,6 +75,7 @@ router.post('/number', function (req, res) {
 			console.log('number already in database');
 		} else {
 			code = generateCode();
+			console.log(code);
 			numbers.insert({ 'number' : number, 'code' : code});
 			sendCode(phoneNumber.toString(), code);
 			res.render('verify');
