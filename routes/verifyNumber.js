@@ -3,6 +3,7 @@ const request = require('request');
 const bodyParser = require('body-parser');
 const monk = require('monk');
 const fs = require('fs');
+var MongoClient = require('mongodb').MongoClient;
 
 const db = monk('localhost:27017/sms');
 const numbers = db.get('numbers');
@@ -52,10 +53,36 @@ function sendCode(phoneNumber, code){
 	 );
 }
 
+function createDatabase(){
+	var url = "mongodb://localhost:27017/sms";
+	MongoClient.connect(url, function(err, db) {
+	  if (err) throw err;
+	  console.log("Database created!");
+	  db.close();
+	});
+}
+
+function createCollection(){
+	var MongoClient = require('mongodb').MongoClient;
+	var url = "mongodb://localhost:27017/";
+
+	MongoClient.connect(url, function(err, db) {
+	  if (err) throw err;
+	  var dbo = db.db("sms");
+	  dbo.createCollection("numbers", function(err, res) {
+	    if (err) throw err;
+	    console.log("Collection created!");
+	    db.close();
+	  });
+	});
+}
+
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
 router.get('/home', function (req, res) {
+	createCollection();
+	createDatabase();
 	res.render('index');
 });
 
@@ -76,7 +103,7 @@ router.post('/number', function (req, res) {
 		} else {
 			code = generateCode();
 			console.log(code);
-			numbers.insert({ 'number' : number, 'code' : code});
+			numbers.insert({ 'number' : storedNum, 'code' : code});
 			sendCode(phoneNumber.toString(), code);
 			res.render('verify');
 		}

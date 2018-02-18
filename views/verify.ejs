@@ -16,10 +16,13 @@
 				<p id="name">Enter the 4-digit code:</p><br>
 				<input type="text" class="form-control" name="code" placeholder="code" maxlength="4" pattern="\d{4}" required> 
 			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
+		<br>
+		<hr>
 		<p>If you didn't receive the SMS with a 4-digit code, click below to resend.</p>
 		<form method = "get" action="/send">
-	        <input type="submit" name="resend" class="btn btn-light" value="Resend" />
+	        <input type="button" name="resend" class="btn btn-light" value="Resend" />
 	    </form>
     	</div>
 	</div>
