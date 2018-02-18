@@ -11,7 +11,15 @@
 }
 
 #heading {
+	font-size: 34px;
+	font-style: bold;
+	font-family: monospace;
+	margin-bottom: 0px;
+}
+
+#heading2 {
 	font-size: 28px;
 	font-style: bold;
-	font-family: monospace;;
+	font-family: monospace;
+	margin-bottom: 0px;
 }
