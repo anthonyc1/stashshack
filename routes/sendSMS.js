@@ -15,6 +15,7 @@ let obj = JSON.parse(configVars);
 const apiKeyVal = obj.apiKey;
 const apiSecretVal = obj.apiSecret;
 const virtualNumber = obj.virtualNumber;
+const testNumber = obj.testNumber;
 
 const nexmo = new Nexmo({
   apiKey: apiKeyVal,
@@ -23,7 +24,7 @@ const nexmo = new Nexmo({
 
 router.get('/send', function (req, res) {
 	nexmo.message.sendSms(
-	  virtualNumber, '13474797101', 'yo',
+	  virtualNumber, testNumber, '',
 	    (err, responseData) => {
 	      if (err) {
 	        console.log(err);
