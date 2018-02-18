@@ -1,0 +1,19 @@
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+.body-style {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.list-group-item{
+    cursor: "defaulte";
+
+}
+
+
+#trivia {
+    font-size: 30px;
+}

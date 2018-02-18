@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ./partials/templates/head.ejs %>
+</head>
+
+<body class="body-style">
+    <div id="triviaGame" class="jumbotron">
+        <h1 id="trivia"></h1>
+        <p>Live Trivia Game Show every day at 10am, 2pm, and 6pm EDT.</p>
+    </div>
+    <script>
+        countDown = <%= countDown %>
+    </script>
+    <% include ./partials/templates/jsDefaults.ejs %>
+</body>
+
+</html>
